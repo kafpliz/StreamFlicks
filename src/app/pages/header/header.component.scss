@@ -1,0 +1,252 @@
+$searchIconWidth : 24px;
+$headerIconsWidth: 30px;
+$headerIconsColor: var(--main-text-color);
+
+.wrapper {
+    width: 100%;
+    min-height: 100px;
+    padding: 25px 240px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.header_item {
+    height: 100%;
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    padding: 8px;
+    display: flex;
+    background: var(--navbar-bg-color);
+    gap: 20px;
+    height: 70px;
+    border: 3px solid var(--main-border-color);
+    border-radius: 15px;
+
+    .navbar_item {
+        display: grid;
+        place-items: center;
+        padding: 0 12px;
+        color: var(--main-text-color);
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all .3s linear;
+    }
+
+    .navbar_item:hover {
+        background: var(--active-el-color);
+        color: white;
+
+        svg {
+            fill: white;
+        }
+    }
+
+    .navbar_item-active {
+        color: white;
+        background: var(--active-el-color);
+        fill: white;
+    }
+
+    .navbar_item-active svg {
+        fill: white;
+    }
+}
+
+.fact-search {
+    height: 44px;
+    background: var(--navbar-bg-color);
+    border: 3px solid var(--main-border-color);
+    border-radius: 15px;
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    gap: 75px;
+    cursor: pointer;
+
+    .fact-search__span {
+        white-space: nowrap;
+        color: var(--main-text-color);
+    }
+
+    .fact-search_icon {
+        width: $searchIconWidth;
+        fill: none;
+    }
+
+}
+
+.logo {
+    height: 100%;
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    .logo__img {
+        height: 85px;
+    }
+
+    .logo_text {
+
+        .logo__span {
+            font-family: Barriecito;
+            font-size: 33px;
+            color: rgb(166, 3, 172);
+
+        }
+    }
+
+}
+
+
+
+.header_icon {
+    width: $headerIconsWidth;
+    display: none;
+
+    svg {
+        fill: $headerIconsColor;
+    }
+}
+
+.header_item:nth-child(2) {
+    flex: 2;
+
+}
+
+@media screen and (max-width:1630px) {
+    .wrapper {
+        padding: 25px 10px 10px;
+    }
+}
+
+@media screen and (max-width:1190px) {
+    .fact-search {
+        gap: 20px;
+    }
+
+    .logo {
+        .logo_text {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width:1050px) {
+    .navbar_item__span {
+        display: none;
+    }
+
+    .header_icon {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width:840px) {
+    .fact-search {
+        .fact-search__span {
+            display: none;
+        }
+    }
+
+}
+
+@media screen and (max-width:590px) {
+    .wrapper {
+        position: static;
+        padding: 10px;
+        min-height: 44px;
+    }
+
+    .header {
+        height: 44px;
+    }
+
+    .logo .logo__img {
+        height: 100%;
+    }
+
+    .header_item:nth-child(2) {
+        flex: 0;
+        position: absolute;
+    }
+
+    .header_item:nth-child(3) {
+        flex: 5 1;
+    }
+
+    .navbar {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        background: var(--main-bg-color);
+        justify-content: center;
+        border-left-width: 0;
+        border-right-width: 0;
+        .navbar_item:nth-child(1) {
+            order: 3;
+        }
+
+        .navbar_item:nth-child(2) {
+            order: 1;
+        }
+
+        .navbar_item:nth-child(3) {
+            order: 2;
+        }
+
+        .navbar_item:nth-child(4) {
+            order: 4;
+        }
+
+        .navbar_item:nth-child(5) {
+            order: 5;
+        }
+
+        .navbar_item-active {
+            transform: scale(1.1);
+        }
+    }
+
+    .fact-search {
+        width: 65%;
+        justify-content: space-between;
+
+        .fact-search__span {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .fact-search{
+        width: 100%;
+    }
+    .navbar{
+        padding: 11px 0;
+        .navbar_item{
+            padding: 0 6px;
+        }
+    }
+}
