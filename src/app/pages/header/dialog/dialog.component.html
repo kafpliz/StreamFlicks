@@ -1,0 +1,57 @@
+<p-dialog [(visible)]="visible" [modal]="true" [dismissableMask]="true" [closable]="true" [blockScroll]="true"
+    [draggable]="false" [resizable]="false" (onHide)="onHide()" [styleClass]="'dialog'" 
+    [style]="{background: 'var(--main-bg-color)', border: '3px solid var(--main-border-color)' }">
+ 
+        <div class="header">
+            <div class="inp-grp">
+                <input type="text" id="header__input" class="header__input" (focus)="changeLabelState()"
+                    (blur)="changeLabelState()" [(ngModel)]="inputText" (input)="setQuery()">
+                <label for="header__input" class="header__label" [ngClass]="{'header__label-active': isLabelActive}">Введите
+                    назавание</label>
+            </div>
+            <div class="type">
+                <div class="type_btn" [ngClass]="{'type_btn-active': selectType('movie')}" (click)="changeType('movie')">
+                    <span class="type_btn__span">Кино</span>
+                </div>
+                <div class="type_btn" [ngClass]="{'type_btn-active': selectType('person')}" (click)="changeType('person')">
+                    <span class="type_btn__span">Актёры</span>
+                </div>
+                <div class="type_btn" [ngClass]="{'type_btn-active': selectType('user')}" (click)="changeType('user')">
+                    <span class="type_btn__span">Пользователь</span>
+                </div>
+            </div>
+        </div>
+        <div class="data">
+            @if(!responce){
+                <span class="data_null"> Давайте найдём..</span>
+            }
+            @if (responce && responce.props.total == 0) {
+                <span class="data_null"> Ничего не найдено..</span>
+            }@else {
+                @if (responce && typeActive == "movie") {
+                    @for (item of responce.data; track $index) {
+                        <app-search-movie-card [data]="item" />
+                    }
+
+                }
+                @if (responce && typeActive == "person") {
+                    @for (item of responce.data; track $index) {
+                        <app-search-persons-card [data]="item"/>
+                    }
+
+                }
+                @if (responce && typeActive == "user") {
+                    @for (item of responce.data; track $index) {
+                        <app-search-user-card [data]="item"/>
+                    }
+
+                }
+               
+            }
+          
+          
+            
+        </div>
+
+
+</p-dialog>

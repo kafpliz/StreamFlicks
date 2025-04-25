@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <img [src]="data.img"
+        alt="Film poster" class="img">
+    <div class="info">
+        <div class="name">
+            @if (data.name && data.enName) {
+                    <span class="name__span">{{data.name}}</span>
+                    <span class="name__span second_name">{{data.enName}}</span>
+                } @else if(data.name){
+                    <span class="name__span">{{data.name}}</span>
+                } @else if(data.enName){
+                    <span class="name__span">{{data.enName}}</span>
+                } @else { 
+                    <span class="name__span">Неизвестный</span>
+                }
+        </div>
+      @if (data.profession) {
+        <div class="proffession">
+            <div class="proffession__span">{{data.profession.join(' / ')}}</div>
+        </div>
+       
+      }
+    </div>
+</div>

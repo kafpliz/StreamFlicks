@@ -3,22 +3,31 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DataSharedService } from '../../shared/services/data-shared.service';
 
+import { DialogComponent } from "./dialog/dialog.component";
+
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, DialogComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   items: boolean = false
   #DataShared = inject(DataSharedService)
-  isLogin:boolean = false
-  ngOnInit(){
-   this.isLogin = this.#DataShared.isLogin()
+  isLogin: boolean = false
+  view: boolean = false
+
+
+
+  ngOnInit() {
+    this.isLogin = this.#DataShared.isLogin()
   }
 
-  changeActive(){
+  changeActive() {
     this.items = !this.items
-    
+  }
+
+  openDialog(){
+    this.view = true
   }
 }

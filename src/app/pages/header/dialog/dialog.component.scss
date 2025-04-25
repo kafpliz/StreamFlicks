@@ -1,0 +1,158 @@
+:host ::ng-deep {
+    .p-dialog-header {
+        display: none;
+    }
+
+    .p-dialog-content {
+        padding: 20px;
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+
+    .dialog {
+        width: 50%;
+        height: 80%;
+        gap: 10px;
+
+    }
+
+    .header {
+        width: 100%;
+        min-height: 50px;
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+
+        .inp-grp {
+            width: 100%;
+            height: 44px;
+            position: relative;
+        }
+
+        .header__input {
+            width: 100%;
+            height: 100%;
+            background: var(--navbar-bg-color);
+            border: 3px solid var(--main-border-color);
+            border-radius: 15px;
+            padding: 0 20px;
+
+            outline: none;
+            color: white;
+        }
+
+        .header__label {
+            color: white;
+            position: absolute;
+            left: 20px;
+            top: 11px;
+            transition: all .2s linear
+        }
+
+        .header__label-active {
+            color: var(--main-text-color);
+            top: -10px;
+            background: var(--main-bg-color);
+        }
+
+        .type {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+
+            .type_btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 10px;
+                border-radius: 15px;
+                cursor: pointer;
+
+                .type_btn__span {
+                    color: var(--main-text-color);
+                    pointer-events: none;
+                }
+            }
+
+            .type_btn-active {
+                background: var(--active-el-color);
+
+                .type_btn__span {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .data {
+        flex: 1 1;
+        gap: 10px;
+        overflow: auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 100px;
+        scroll-snap-type: mandatory;
+    }
+
+    .data::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .data_null {
+        grid-column: 1 /-1;
+        color: white;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1660px) {
+    :host ::ng-deep {
+        .dialog {
+            width: 80%;
+        }
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    :host ::ng-deep {
+        .dialog {
+            width: 95%;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    :host ::ng-deep {
+        .data {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}
+
+@media screen and (max-width: 590px) {
+    :host ::ng-deep {
+        .p-dialog-content {
+            padding: 20px 5px 5px;
+        }
+        .dialog{
+            width: 99%;
+            height: 100%;
+        }
+    }
+}
+@media screen and (max-width: 550px) {
+    :host ::ng-deep {
+       .header{
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 50px;
+       }
+    }
+}
+@media screen and (max-width: 530px) {
+    .data{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    }
+}

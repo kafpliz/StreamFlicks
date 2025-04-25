@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <img [src]="data.photo"
+        alt="Film poster" class="img">
+    <div class="info">
+        <div class="name">
+            @if (data.name) {
+                    <span class="name__span">{{data.name}} {{data.lastName}} </span>
+                }
+        </div>
+      @if (data.description) {
+        <div class="description">
+            <div class="description__span">{{data.description}}</div>
+        </div>
+       
+      }
+    </div>
+</div>
