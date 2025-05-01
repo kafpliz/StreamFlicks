@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" >
     <div class="header">
         <div class="header_item">
             <div class="logo">
@@ -10,8 +10,8 @@
         </div>
         <div class="header_item">
             <div class="navbar">
-                <div class="navbar_item"  [routerLink]="['/']" [routerLinkActiveOptions]="{exact:true}"
-                    routerLinkActive="navbar_item-active">
+                <div class="navbar_item"  [routerLink]="['/']" routerLinkActive="navbar_item-active" [routerLinkActiveOptions]="{exact:true, queryParams: 'ignored'}"
+                 >
                     <span class="navbar_item__span">Главная</span>
                     <div class="header_icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6" >

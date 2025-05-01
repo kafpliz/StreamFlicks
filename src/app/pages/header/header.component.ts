@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { DataSharedService } from '../../shared/services/data-shared.service';
 
 import { DialogComponent } from "./dialog/dialog.component";
@@ -16,11 +16,11 @@ export class HeaderComponent {
   #DataShared = inject(DataSharedService)
   isLogin: boolean = false
   view: boolean = false
-
-
+  #router = inject(Router)
 
   ngOnInit() {
     this.isLogin = this.#DataShared.isLogin()
+
   }
 
   changeActive() {

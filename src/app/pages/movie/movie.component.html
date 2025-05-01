@@ -1,0 +1,212 @@
+@if (isLoad) {
+<div class="wrapper">
+
+    <div class="content">
+        @if (data.backdrop) {
+        <div class="backdrop">
+            <img class="backdrop__img" [src]="data.backdrop" alt="backdrop img">
+        </div>
+        }
+        <div class="container">
+            <div class="summary">
+                <div class="poster-slogan " [ngClass]="{'poster-slogan-addition': data.slogan, }">
+                    <div class="poster" [ngClass]="{'poster-backdrop': data.backdrop}">
+                        <img class="poster__img" [src]="data.poster" alt="Movie img">
+                    </div>
+                    @if (data.slogan) { <span class="slogan__span">{{data.slogan}}</span> }
+                </div>
+                <div class="short-info">
+                    <div class="short-info_item" *ngIf="data.type">
+                        <span class="item__span">Тип</span>
+                        <span class="item__span">{{data.type.name}}</span>
+                    </div>
+                    <div class="short-info_item" *ngIf="data.relesed">
+                        <span class="item__span">Выпуск</span>
+                        <span class="item__span">{{data.relesed}} г. </span>
+                    </div>
+                    <div class="short-info_item" *ngIf="data.status">
+                        <span class="item__span">Статус</span>
+                        <span class="item__span">{{data.status.name}} </span>
+                    </div>
+
+                    <div class="short-info_item">
+                        @if(data.movieLength){
+                        <span class="item__span">Длительность фильма</span>
+                        <span class="item__span">{{data.movieLength}} мин.</span>
+                        } @else {
+                        <span class="item__span">Длительность серии</span>
+                        <span class="item__span">{{data.seriesLength}} мин.</span>
+                        }
+                    </div>
+                    <div class="short-info_item">
+                        <span class="item__span">Посещений</span>
+                        <span class="item__span">{{data.viewsPage}} </span>
+                    </div>
+                    <div class="short-info_item">
+                        <span class="item__span">Голосов</span>
+                        <span class="item__span">{{data.votes}} </span>
+                    </div>
+                    @if (data.list) {
+                    <div class="short-info_item">
+                        <span class="item__span">Коллекции</span>
+                        <span class="item__span">{{data.list}} </span>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="info">
+                <div class="name-rating">
+                    <div class="name">
+                        <span class="name__span">{{data.name}}</span>
+                        <span class="name__span">{{data.altName}}</span>
+                    </div>
+                    <div class="rating">
+                        <div class="rating__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gold">
+                                <path fill-rule="evenodd"
+                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <span class="rating__span">{{data.rating ? (+data.rating).toFixed(2) : '-'}}</span>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="details__item short-info">
+                        <swiper-container class="short-info-swiper" slides-per-view="4" [breakpoints]="breakpoints"
+                            navigation="false" #swiperRef>
+                            <swiper-slide class="short-info_item" *ngIf="data.type">
+                                <span class="item_category">Тип</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{data.type.name}}</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.status">
+                                <span class="item_category">Статус</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{data.status.name}}</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.rating">
+                                <span class="item_category">Рейтинг</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{ data.rating ? (+data.rating).toFixed(2) : '-' }}</span>
+                                    <div class="rating__icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gold">
+                                            <path fill-rule="evenodd"
+                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.relesed">
+                                <span class="item_category">Выпуск</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{data.relesed}}</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.movieLength || data.seriesLength">
+                                <span class="item_category" *ngIf="data.movieLength">Прод. фильма</span>
+                                <span class="item_category" *ngIf="data.seriesLength">Прод. серии</span>
+                                <div class="item_spans">
+                                    <span class="item_span" *ngIf="data.movieLength">{{data.movieLength}} мин.</span>
+                                    <span class="item_span" *ngIf="data.seriesLength">{{data.seriesLength}} мин.</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.votes">
+                                <span class="item_category">Голосов</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{data.votes}}</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.viewsPage">
+                                <span class="item_category">Посещений</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{data.viewsPage}}</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="short-info_item" *ngIf="data.list">
+                                <span class="item_category">Коллекции</span>
+                                <div class="item_spans">
+                                    <span class="item_span">{{data.list}}</span>
+                                </div>
+                            </swiper-slide>
+                       
+                        </swiper-container>
+                        <div (click)="slidePrev()" class="arrows arrow-prev"  [ngClass]="{'arrow-disabled': isSlidesBegin}">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" >
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                            </svg>
+                        </div>
+                        <div (click)="slideNext()" class="arrows arrow-next" [ngClass]="{'arrow-disabled': isSlidesEnd}">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="details__item description">
+                        <span class="description__span">{{data.description ? data.description : 'Описание отсутсвует.'}}</span>
+                    </div>
+                    <div class="details__item countries-ageRating">
+                      <!--   <span class="countries__span">Страна производитель:</span> -->
+                      <div class="item ageRating" *ngIf="data.ageRating">
+                        <span class="item__span ageRating__span">{{data.ageRating}}+</span>
+                    </div>
+                        @for (item of data.countries; track $index) {
+                        <div class="item country">
+                            <span class="item__span country__span">{{item.name}}</span>
+                        </div>
+                        }
+                    </div>
+                    <div class="details__item genres">
+                        <!-- <span class="genres__span">Жанры:</span> -->
+                        @for (item of data.genres; track $index) {
+                        <div class="genre">
+                            <span class="genre__span">{{item.name}}</span>
+                        </div>
+                        }
+                    </div>
+                    <div class="details__item persons">
+                        <swiper-container class="persons-swiper" slides-per-view="auto" space-between="20">
+
+                            @for (item of data.persons; track $index) {
+                            <swiper-slide class="person">
+                                <img class="person__img" [src]="item.img" alt="Person photo" loading="lazy">
+                                <span class="person_name">{{item.name}}</span>
+                            </swiper-slide>
+                            }
+
+                        </swiper-container>
+                    </div>
+                    <div class="details__item player-container" *ngIf="data.link">
+                        <iframe [src]="safeUrl" class="player" frameborder="0" allowfullscreen >
+
+                        </iframe>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+} @else {
+<div class="wrapper">
+    <ngx-skeleton-loader animation="progress-dark" [theme]="{
+            'height': '400px'
+        }" />
+    <div style="display: flex; gap: 50px;">
+        <ngx-skeleton-loader animation="progress-dark" style="flex: 1 1;" [theme]="{
+                'height': '400px',
+            }" />
+        <ngx-skeleton-loader animation="progress-dark" style="flex: 4 1;" [theme]="{
+                'height': '400px'
+            }" />
+    </div>
+</div>
+}

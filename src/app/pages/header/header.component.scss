@@ -9,7 +9,6 @@ $headerIconsColor: var(--main-text-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
 
 }
 
@@ -195,6 +194,7 @@ $headerIconsColor: var(--main-text-color);
     }
 
     .navbar {
+        z-index: 100;
         position: fixed;
         width: 100%;
         bottom: 0;

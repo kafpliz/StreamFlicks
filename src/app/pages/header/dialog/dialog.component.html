@@ -30,7 +30,7 @@
             }@else {
                 @if (responce && typeActive == "movie") {
                     @for (item of responce.data; track $index) {
-                        <app-search-movie-card [data]="item" />
+                        <app-search-movie-card [data]="item" [routerLink]="['movie', item.id]"/>
                     }
 
                 }
