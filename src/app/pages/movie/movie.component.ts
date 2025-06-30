@@ -7,6 +7,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SwiperOptions } from 'swiper/types';
 import { SwiperContainer } from 'swiper/element';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TgService } from '../../core/tg.service';
 
 
 
@@ -31,7 +32,10 @@ export class MovieComponent {
   hasBackdrop!:boolean
   @ViewChild('swiperRef', { static: false }) swiperComp!: ElementRef
 
+  telegram = inject(TgService)
+
   ngOnInit() {
+    this.telegram.init()
     this.#route.params.subscribe(params => {
       this.#service.getMovie(params['id']).subscribe(d => {
         console.log(d);

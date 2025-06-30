@@ -39,11 +39,11 @@
                         <span class="item__span">{{data.seriesLength}} мин.</span>
                         }
                     </div>
-                    <div class="short-info_item">
+                    <div class="short-info_item" *ngIf="data.viewsPage">
                         <span class="item__span">Посещений</span>
                         <span class="item__span">{{data.viewsPage}} </span>
                     </div>
-                    <div class="short-info_item">
+                    <div class="short-info_item" *ngIf="data.votes">
                         <span class="item__span">Голосов</span>
                         <span class="item__span">{{data.votes}} </span>
                     </div>
@@ -172,7 +172,7 @@
                         </div>
                         }
                     </div>
-                    <div class="details__item persons">
+                    <div class="details__item persons" *ngIf="data.persons">
                         <swiper-container class="persons-swiper" slides-per-view="auto" space-between="20">
 
                             @for (item of data.persons; track $index) {
