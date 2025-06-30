@@ -1,0 +1,48 @@
+<div class="wrapper">
+    <div class="header">
+        <h1>Регистрация</h1>
+        <div class="line"></div>
+    </div>
+
+    <div class="details" [formGroup]="form">
+
+        <div class="photo-item">
+            <app-cva-photo-input formControlName="photo" />
+        </div>
+
+        <div class="fullname">
+            <div class="item"> <app-cva-input [placeholder]="'firstName'" formControlName="firstName"></app-cva-input>
+            </div>
+            <div class="item"> <app-cva-input [placeholder]="'lastName'" formControlName="lastName"></app-cva-input>
+            </div>
+        </div>
+        <div class="item">
+            <app-cva-input [placeholder]="'email'" formControlName="email"></app-cva-input>
+        </div>
+        <div class="item">
+            <app-cva-input [placeholder]="'password'" formControlName="password"></app-cva-input>
+        </div>
+        <div class="item">
+            <app-cva-input [placeholder]="'repeat_password'" formControlName="repeatPassword"></app-cva-input>
+        </div>
+
+        <div class="errors">
+            <span class="errors__span" *ngIf="isRequired">Обязательные поля помеченные красным цветом!</span>
+            <span class="errors__span" *ngIf="isInvalid">Форма заполнена не правильно!</span>
+            <span class="errors__span" *ngIf="form.get('email')?.touched && form.get('email')?.errors">Поле Email
+                заполнено не правильно либо пустое!</span>
+            <span class="errors__span" *ngIf="form.get('password')?.touched && form.get('password')?.errors">Пароль
+                должен состоять минимум из 6-ти символов и максимум 32-ух символов!</span>
+            <span class="errors__span"
+                *ngIf="form.get('password')?.touched && form.get('repeatPassword')?.touched && form.get('password')?.value != form.get('repeatPassword')?.value">Пароли
+                не совпадают!</span>
+
+        </div>
+    </div>
+    <button class="btn" (click)="send()">Отправить</button>
+    <div class="hasAcc" [routerLink]="['../login']">
+        <span class="hasAcc__span">Уже есть аккаунт? Войдите!</span>
+        <div class="line"></div>
+    </div>
+
+</div>

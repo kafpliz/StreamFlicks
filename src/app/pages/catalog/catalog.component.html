@@ -1,1 +1,15 @@
-<p>catalog works!</p>
+<div class="wrapper">
+  <div class="filter">
+    <app-filter />
+  </div>
+  @if (content) {
+  <div class="content">
+    @for (item of content; track $index) {
+    <app-catalog-card [data]="item" [routerLink]="['../movie', item.id]" />
+    }
+  </div>
+  @if(load){
+    load....
+  }
+  }
+</div>

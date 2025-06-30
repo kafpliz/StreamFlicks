@@ -25,27 +25,26 @@ export class DialogComponent {
   #router = inject(Router)
   #route = inject(ActivatedRoute)
   #service = inject(FastSearchService)
-  page: number = 1
   maxPage: number | null = null
   params: IHeaderDialogParams = {
-    type: this.typeActive
+    ftype: this.typeActive
   }
   responce: IHeaderSearchResponce | null = null
   #routerSubscription!:Subscription;
 
   ngOnInit() {
+
     this.#route.queryParams.subscribe(data => {
-      if (data['type'] && data['q']&& data['page']) {
-        this.params.type = data['type']
-        this.typeActive = data['type']
-        this.params.page = data['page']
-        this.params.q = data['q']
-        this.inputText = data['q']
+      if (data['ftype'] && data['fq']) {
+        this.params.ftype = data['ftype']
+        this.typeActive = data['ftype']
+        this.params.fq = data['fq']
+        this.inputText = data['fq']
         this.isLabelActive = this.inputText.length == 0 ? false : true
       }
       
-      if (this.params.q && this.params.type && this.params.page) {
-        this.#service.fastSearch(this.params.q, this.params.type, this.params.page).subscribe(data => {
+      if (this.params.fq && this.params.ftype) {
+        this.#service.fastSearch(this.params.fq, this.params.ftype).subscribe(data => {
           this.responce = data
         })
       }
@@ -71,11 +70,11 @@ export class DialogComponent {
 
   changeType(type: string) {
     this.typeActive = type
-    this.params.type = this.typeActive
+    this.params.ftype = this.typeActive
     this.#router.navigate([], {
       relativeTo: this.#route,
       queryParams: {
-        type: this.typeActive
+        ftype: this.typeActive
       },
       queryParamsHandling: 'merge'
     })
@@ -96,8 +95,7 @@ export class DialogComponent {
 
   setQuery() {
     if (this.inputText.length >= 2) {
-      this.params['q'] = this.inputText
-      this.params['page'] = this.page
+      this.params['fq'] = this.inputText
       this.#router.navigate([], {
         relativeTo: this.#route,
         queryParams: this.params,

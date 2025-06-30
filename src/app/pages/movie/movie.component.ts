@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, NgZone, ViewChild } from '@angular/core';
 import { IMovie, IMovieShortInfo } from '../../shared/interfaces/movie.interface';
 import { MovieService } from '../../core/services/movie.service';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,7 @@ export class MovieComponent {
   isSlidesBegin:boolean = true
   safeUrl!:SafeResourceUrl
   #sanitizer = inject(DomSanitizer)
-
+  #ngZone = inject(NgZone)
   @ViewChild('swiperRef', { static: false }) swiperComp!: ElementRef
 
   ngOnInit() {
@@ -47,9 +47,22 @@ export class MovieComponent {
 
   
   ngAfterViewInit(): void {
-
+    setTimeout(() => {
+      const swiperInstance = this.swiperComp.nativeElement.swiper
+    
+    if(swiperInstance){
+      swiperInstance.on('setTranslate', (translate: any) => {
+        this.#ngZone.run(()=> {
+          this.setArrows(swiperInstance.isBeginning,swiperInstance.isEnd)
+        })
+   
+      });
+      
+    }
+    }, 1500);
+    
   }
-
+ 
 
   slidePrev() {
     this.swiperComp.nativeElement.swiper.slidePrev();
@@ -60,6 +73,11 @@ export class MovieComponent {
     this.swiperComp.nativeElement.swiper.slideNext();
     this.isSlidesBegin = this.swiperComp.nativeElement.swiper.isBeginning
     this.isSlidesEnd =  this.swiperComp.nativeElement.swiper.isEnd
+  }
+
+  setArrows(prev:boolean, next:boolean){
+    this.isSlidesBegin = prev;
+    this.isSlidesEnd = next; 
   }
 
 }

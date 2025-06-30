@@ -1,7 +1,6 @@
 export interface IHeaderDialogParams {
-    type?: string,
-    page?: number,
-    q?: string
+    ftype?: string,
+    fq?: string
 }
 
 export interface IHeaderSearchResponce {

@@ -1,0 +1,4 @@
+<div class="wrapper">
+    <label for="label" class="label">{{placeholderArr[0]}}</label>
+    <input class="input" [value]="value" id="label" (input)="onInput($event)" (blur)="onTouched()" [disabled]="isDisabled" [placeholder]="placeholderArr[1]" >
+</div>

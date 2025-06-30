@@ -11,22 +11,23 @@
             <div class="summary">
                 <div class="poster-slogan " [ngClass]="{'poster-slogan-addition': data.slogan, }">
                     <div class="poster" [ngClass]="{'poster-backdrop': data.backdrop}">
-                        <img class="poster__img" [src]="data.poster" alt="Movie img">
+                        <img class="poster__img" [src]="data.poster" alt="Movie img" *ngIf="data.poster">
+                        <img class="poster__img" src="no-image.jpg" alt="Movie img" *ngIf="!data.poster">
                     </div>
                     @if (data.slogan) { <span class="slogan__span">{{data.slogan}}</span> }
                 </div>
                 <div class="short-info">
-                    <div class="short-info_item" *ngIf="data.type">
+                    <div class="short-info_item" *ngIf="data.type ">
                         <span class="item__span">Тип</span>
-                        <span class="item__span">{{data.type.name}}</span>
+                        <span class="item__span">{{data.type.name || '-'}}</span>
                     </div>
                     <div class="short-info_item" *ngIf="data.relesed">
                         <span class="item__span">Выпуск</span>
                         <span class="item__span">{{data.relesed}} г. </span>
                     </div>
-                    <div class="short-info_item" *ngIf="data.status">
+                    <div class="short-info_item" *ngIf="data.status ">
                         <span class="item__span">Статус</span>
-                        <span class="item__span">{{data.status.name}} </span>
+                        <span class="item__span">{{data.status.name || '-'}} </span>
                     </div>
 
                     <div class="short-info_item">
@@ -72,19 +73,19 @@
                     </div>
                 </div>
                 <div class="details">
-                    <div class="details__item short-info">
-                        <swiper-container class="short-info-swiper" slides-per-view="4" [breakpoints]="breakpoints"
+                    <div class="details__item short-info" >
+                        <swiper-container class="short-info-swiper" slides-per-view="4" [breakpoints]="breakpoints" 
                             navigation="false" #swiperRef>
                             <swiper-slide class="short-info_item" *ngIf="data.type">
                                 <span class="item_category">Тип</span>
                                 <div class="item_spans">
-                                    <span class="item_span">{{data.type.name}}</span>
+                                    <span class="item_span">{{data.type.name || '-'}}</span>
                                 </div>
                             </swiper-slide>
                             <swiper-slide class="short-info_item" *ngIf="data.status">
                                 <span class="item_category">Статус</span>
                                 <div class="item_spans">
-                                    <span class="item_span">{{data.status.name}}</span>
+                                    <span class="item_span">{{data.status.name || '-'}}</span>
                                 </div>
                             </swiper-slide>
                             <swiper-slide class="short-info_item" *ngIf="data.rating">
@@ -176,7 +177,7 @@
 
                             @for (item of data.persons; track $index) {
                             <swiper-slide class="person">
-                                <img class="person__img" [src]="item.img" alt="Person photo" loading="lazy">
+                                <img class="person__img" [src]="item.photo" alt="Person photo" loading="lazy">
                                 <span class="person_name">{{item.name}}</span>
                             </swiper-slide>
                             }

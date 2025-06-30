@@ -5,11 +5,11 @@ $headerIconsColor: var(--main-text-color);
 .wrapper {
     width: 100%;
     min-height: 100px;
-    padding: 25px 240px 10px;
+    padding: 25px 10px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    display: none; //
 }
 
 .header {

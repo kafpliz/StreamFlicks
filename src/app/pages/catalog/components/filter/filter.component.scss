@@ -1,0 +1,29 @@
+.wrapper {
+    width: 100%;
+    min-height: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.item_select { 
+    width: 220px;
+    min-height: 30px;
+}
+
+
+
+/* .range_slider_container{
+    width: 250px;
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    .range_slider__span{
+        color: white;
+    }
+} */
+
+.range_slider {
+    width: 70%;
+}

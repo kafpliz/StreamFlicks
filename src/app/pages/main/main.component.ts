@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DataSharedService } from '../../shared/services/data-shared.service';
 
 @Component({
   selector: 'app-main',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
+  #service = inject(DataSharedService)
+  usLOgin:boolean = false
+  ngOnInit(){
+
+  }
 }

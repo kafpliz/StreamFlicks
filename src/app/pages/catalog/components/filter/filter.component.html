@@ -1,0 +1,17 @@
+<div class="wrapper">
+
+  <div class="item_select sort">
+    <app-select-group [sortGroup]="sort" [placeholder]="'Сортировать по'" (data)="changeSort($event)" />
+  </div>
+  <div class="item_select status">
+    <app-select [sort]="status" [placeholder]="'Статус'" (data)="changeSelect($event, 'status')"/>
+  </div>
+  <div class="item_select type">
+    <app-select [sort]="type" [placeholder]="'Тип'" (data)="changeSelect($event, 'type')"/>
+  </div>
+  <!--   <div class="rating">
+    <p-slider [(ngModel)]="rating" [range]="true" [min]="1" [max]="10" [step]="1" class="range_slider" />
+    <span class="range_slider__span">{{rating[0]}} - {{rating[1]}}</span>
+  </div> -->
+
+</div>

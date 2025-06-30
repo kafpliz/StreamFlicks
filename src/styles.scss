@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Manrope:wght@200..800&display=swap');
-
+@import "primeicons/primeicons.css";
 
 :root{
     --main-bg-color: #0F0F0F;
     --main-border-color: #1F1F1F;
     --main-text-color: #BFBFBF;
-    --active-el-color: #1A1A1A;
+    --active-el-color: #222222;
     --navbar-bg-color: #0f0f0fb7;
     --card-bg-color: #201c1c;
     --card-el-color: #a7a7a7;

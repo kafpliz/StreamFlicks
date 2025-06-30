@@ -1,0 +1,11 @@
+<p-select [options]="sortGroup" [(ngModel)]="selectSort"  [placeholder]="placeholder" size="small" [group]="true"
+    class="w-full md:w-56" [className]="'select'" panelStyleClass="select_panel" dropdownIcon="pi pi-sort-alt"
+    (onChange)="changeValue()">
+    <ng-template let-group #group>
+        <div class="">
+            <i [class]="['pi', 'icon', group.value]" style="font-size: 0.8rem; margin-right: 5px;"></i> 
+            <span>{{ group.label }}</span>
+        </div>
+
+    </ng-template>
+</p-select>

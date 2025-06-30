@@ -1,0 +1,61 @@
+:host ::ng-deep {
+    .select {
+        width: 100%;
+        background: transparent;
+        border: 3px solid var(--main-border-color);
+
+        .p-select-label {
+            color: white;
+        }
+
+        .p-placeholder {
+            color: var(--main-text-color);
+        }
+
+        &:not(.p-disabled):hover {
+            border-color: var(--active-el-color);
+        }
+
+        &:not(.p-disabled).p-focus {
+            border-color: var(--active-el-color);
+        }
+
+        .select_panel {
+            background: #0f0f0fc0;
+            border: 2px solid var(--main-border-color);
+            color: white;
+
+            .p-ripple {
+                color: var(--main-text-color);
+            }
+
+            .p-select-option-group {
+                color: white;
+            }
+
+            .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+                background: var(--active-el-color);
+                color: white;
+            }
+
+            .p-select-list-container::-webkit-scrollbar {
+                width: 0;
+            }
+
+            .p-select-option.p-select-option-selected.p-focus {
+                background: var(--active-el-color);
+                color: white;
+            }
+
+            .p-select-option.p-select-option-selected {
+                background: var(--active-el-color);
+                color: white;
+            }
+        }
+
+        .icon.pi-star-fill {
+            color: gold;
+        }
+
+    }
+}

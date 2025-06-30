@@ -2,4 +2,16 @@
     background: var(--main-bg-color);
     width: 100%;
     min-height: 100vh;
+    padding: 0 240px;
+}
+@media screen and (max-width: 1630px) {
+    .wrapper {
+        padding: 10px 10px 10px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+  /*   .wrapper {
+        padding-bottom: 80px;
+    } */
 }

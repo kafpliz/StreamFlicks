@@ -9,9 +9,9 @@ import { IHeaderSearchResponce } from '../../shared/interfaces/header.interface'
   providedIn: 'root'
 })
 export class FastSearchService extends BaseService {
-
-  fastSearch(q: string, type: string, page: number) {
-    const params = new HttpParams().set('q', q).set('page', page).set('type', type)
+  
+  fastSearch(q: string, type: string) {
+    const params = new HttpParams().set('q', q).set('type', type)
     return this.http.get<IHeaderSearchResponce>(EMain.api + EHeader.url, { params })
   }
 

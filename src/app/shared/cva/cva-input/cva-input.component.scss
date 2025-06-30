@@ -1,0 +1,53 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 10px;
+}
+
+.label {
+    color: white;
+}
+
+.input {
+    border: 2px solid var(--main-border-color);
+    outline: none;
+    border-radius: 10px;
+    height: 50px;
+    padding: 0 10px;
+    color: white;
+    margin-left: 5px;
+    background: var(--active-el-color);
+
+
+}
+
+
+
+:host(.invalid) input {
+    border-color: red;
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

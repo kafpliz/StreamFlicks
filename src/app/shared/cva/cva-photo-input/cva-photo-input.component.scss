@@ -1,0 +1,20 @@
+.wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+        width: 100%;
+
+    }
+
+    input {
+        width: 130%;
+        height: 150%;
+        position: absolute;
+        left: -30px;
+        top: -52px;
+    }
+}

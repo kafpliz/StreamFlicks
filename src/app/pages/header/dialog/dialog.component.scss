@@ -93,7 +93,7 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         grid-auto-rows: 100px;
-        scroll-snap-type: mandatory;
+        scroll-snap-type: y mandatory;
     }
 
     .data::-webkit-scrollbar {

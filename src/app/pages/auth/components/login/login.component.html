@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <div class="header">
+        <h1>Авторизация</h1>
+        <div class="line"></div>
+    </div>
+    <div class="details" [formGroup]="form">
+        <div class="item">
+            <app-cva-input [placeholder]="'email'" formControlName="email" />
+        </div>
+        <div class="item">
+            <app-cva-input [placeholder]="'password'" formControlName="password" />
+        </div>
+        <div class="errors">
+            <span class="errors__span" *ngIf="isInvalid">Форма заполнена не правильно!</span>
+            <span class="errors__span" *ngIf="form.get('email')?.touched && form.get('email')?.errors">Поле Email
+                заполнено не правильно либо пустое!</span>
+            <span class="errors__span" *ngIf="form.get('password')?.touched && form.get('password')?.errors">Пароль
+                должен состоять минимум из 6-ти символов и максимум 32-ух символов!</span>
+            <span class="errors__span" *ngIf="loginError.inCorrect">{{loginError.mesage}}</span>
+
+        </div>
+    </div>
+
+
+    <button class="btn" (click)="send()">Войти</button>
+    <div class="problems">
+        <div class="item" [routerLink]="['../']">
+            <span class="item__span">Забыли пароль?</span>
+            <div class="line"></div>
+        </div>
+        <div class="item" [routerLink]="['../signup']">
+            <span class="item__span">Уже есть аккаунт? Войдите!</span>
+            <div class="line"></div>
+        </div>
+    </div>
+</div>

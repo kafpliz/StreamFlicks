@@ -1,0 +1,4 @@
+<div class="wrapper">
+    <img [src]="priviewUrl" alt="" srcset="">
+    <input type="file" accept="image/*" (change)="onFileChange($event)" (blur)="onTouched()" [disabled]="isDisabled">
+</div>

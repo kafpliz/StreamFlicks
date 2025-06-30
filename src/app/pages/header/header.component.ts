@@ -4,6 +4,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { DataSharedService } from '../../shared/services/data-shared.service';
 
 import { DialogComponent } from "./dialog/dialog.component";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -17,16 +18,22 @@ export class HeaderComponent {
   isLogin: boolean = false
   view: boolean = false
   #router = inject(Router)
-
+  #subscription!  :Subscription
   ngOnInit() {
-    this.isLogin = this.#DataShared.isLogin()
+    this.#subscription = this.#DataShared.isLogged.subscribe(loginstatus=> {
+        this.isLogin = loginstatus
+    })
 
   }
 
   changeActive() {
     this.items = !this.items
   }
-
+  ngOnDestroy(){
+    if(this.#subscription){
+      this.#subscription.unsubscribe()
+    }
+  }
   openDialog(){
     this.view = true
   }

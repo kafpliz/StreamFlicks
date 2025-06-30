@@ -17,6 +17,7 @@ export interface IMovie {
         id:number
         name:string
         img:string
+        photo:string
     }[]
     genres: { name: string, id: number }[]
     type: { name: string }
