@@ -1,3 +1,3 @@
 export enum EMain {
-    api = 'http://anumo.fun/api/'
+    api = 'https://anumo.fun/api/'
 }
