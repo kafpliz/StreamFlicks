@@ -28,6 +28,7 @@ export class MovieComponent {
   safeUrl!:SafeResourceUrl
   #sanitizer = inject(DomSanitizer)
   #ngZone = inject(NgZone)
+  hasBackdrop!:boolean
   @ViewChild('swiperRef', { static: false }) swiperComp!: ElementRef
 
   ngOnInit() {
@@ -35,6 +36,9 @@ export class MovieComponent {
       this.#service.getMovie(params['id']).subscribe(d => {
         console.log(d);
         this.data = d;
+        this.hasBackdrop = this.data.backdrop ? true : false
+        console.log(this.hasBackdrop);
+        
         this.isLoad = true
         if(this.data.link){
           this.safeUrl = this.#sanitizer.bypassSecurityTrustResourceUrl(this.data.link)

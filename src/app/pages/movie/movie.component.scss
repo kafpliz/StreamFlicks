@@ -351,8 +351,11 @@
 
             .poster-backdrop {
 
-                position: absolute;
-                bottom: 20px;
+                position: relative;
+                .poster__img {
+                        position: absolute;
+    bottom: 0;
+                }
             }
         }
 
@@ -493,12 +496,11 @@
         .poster-slogan {
             .poster {
                 width: 35%;
-                bottom: 50px;
+       
             }
 
             .slogan__span {
-                position: absolute;
-                bottom: 0px;
+            
             }
         }
     }
