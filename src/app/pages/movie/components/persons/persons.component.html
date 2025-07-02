@@ -1,0 +1,10 @@
+<swiper-container class="persons-swiper" slides-per-view="auto" space-between="20">
+
+    @for (item of persons; track $index) {
+    <swiper-slide class="person">
+        <img class="person__img" [src]="item.photo" alt="Person photo" loading="lazy">
+        <span class="person_name">{{item.name}}</span>
+    </swiper-slide>
+    }
+
+</swiper-container>

@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="details">
-                    <div class="details__item short-info" >
+                    <div class="details_item short-info" >
                         <swiper-container class="short-info-swiper" slides-per-view="4" [breakpoints]="breakpoints" 
                             navigation="false" #swiperRef>
                             <swiper-slide class="short-info_item" *ngIf="data.type">
@@ -150,10 +150,10 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="details__item description">
+                    <div class="details_item description">
                         <span class="description__span">{{data.description ? data.description : 'Описание отсутсвует.'}}</span>
                     </div>
-                    <div class="details__item countries-ageRating">
+                    <div class="details_item countries-ageRating">
                       <!--   <span class="countries__span">Страна производитель:</span> -->
                       <div class="item ageRating" *ngIf="data.ageRating">
                         <span class="item__span ageRating__span">{{data.ageRating}}+</span>
@@ -164,7 +164,7 @@
                         </div>
                         }
                     </div>
-                    <div class="details__item genres">
+                    <div class="details_item genres">
                         <!-- <span class="genres__span">Жанры:</span> -->
                         @for (item of data.genres; track $index) {
                         <div class="genre">
@@ -172,23 +172,20 @@
                         </div>
                         }
                     </div>
-                    <div class="details__item persons" *ngIf="data.persons">
-                        <swiper-container class="persons-swiper" slides-per-view="auto" space-between="20">
-
-                            @for (item of data.persons; track $index) {
-                            <swiper-slide class="person">
-                                <img class="person__img" [src]="item.photo" alt="Person photo" loading="lazy">
-                                <span class="person_name">{{item.name}}</span>
-                            </swiper-slide>
-                            }
-
-                        </swiper-container>
+                    <div class="details_item persons" *ngIf="data.persons">
+                     <app-persons [persons]="data.persons"/>
                     </div>
-                    <div class="details__item player-container" *ngIf="data.link">
+                    <div class="details_item player-container" *ngIf="data.link">
                         <iframe [src]="safeUrl" class="player" frameborder="0" allowfullscreen >
 
                         </iframe>
 
+                    </div>
+                    <div class="details_item related" *ngIf="data.sequels">
+                     <app-related [sequels]="data.sequels"/>
+                    </div>
+                    <div class="details_item recomended" *ngIf="data.similar">
+                        <app-recomended [similar]="data.similar"/>
                     </div>
                 </div>
 
@@ -196,7 +193,8 @@
         </div>
     </div>
 </div>
-} @else {
+}
+ @else {
 <div class="wrapper">
     <ngx-skeleton-loader animation="progress-dark" [theme]="{
             'height': '400px'

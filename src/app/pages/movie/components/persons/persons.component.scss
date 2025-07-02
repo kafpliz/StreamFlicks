@@ -1,0 +1,28 @@
+      swiper-container {
+          width: 100%;
+          height: 100%;
+      }
+
+      .person {
+          width: 180px;
+          min-height: 150px;
+          padding: 0 15px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .person_name {
+              color: var(--main-text-color);
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+          }
+
+          .person__img {
+              height: 150px;
+              border-radius: 10px;
+          }
+      }

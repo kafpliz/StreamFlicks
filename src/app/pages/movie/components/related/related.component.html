@@ -1,0 +1,10 @@
+<swiper-container class="related-swiper" slides-per-view="auto" space-between="20">
+  @for (item of sequels; track $index) {
+  <swiper-slide class="movie" [routerLink]="['../', item.id]"> 
+    <img [src]="item.poster" alt="poster" srcset="">
+    <span class="name">{{item.name || item.altName}}</span>
+  </swiper-slide>
+  }
+
+
+</swiper-container>

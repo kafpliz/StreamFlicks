@@ -8,12 +8,15 @@ import { SwiperOptions } from 'swiper/types';
 import { SwiperContainer } from 'swiper/element';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TgService } from '../../core/tg.service';
+import { PersonsComponent } from "./components/persons/persons.component";
+import { RecomendedComponent } from "./components/recomended/recomended.component";
+import { RelatedComponent } from "./components/related/related.component";
 
 
 
 @Component({
   selector: 'app-movie',
-  imports: [CommonModule, NgxSkeletonLoaderModule],
+  imports: [CommonModule, NgxSkeletonLoaderModule, PersonsComponent, RecomendedComponent, RelatedComponent],
   templateUrl: './movie.component.html',
   styleUrl: './movie.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

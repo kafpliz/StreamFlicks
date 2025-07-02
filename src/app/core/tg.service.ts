@@ -12,9 +12,10 @@ export class TgService {
   }
 
   init() {
-
-    if (this.#webApp.platform !== 'unknown' && !this.#webApp.isExpanded) {
-      this.#webApp.expand();
-    }
+      console.log();
+      if(this.#webApp.platform  != 'unknown'){
+         this.#webApp.requestFullscreen();
+      }
+    
   }
 }
